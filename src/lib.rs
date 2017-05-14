@@ -31,7 +31,7 @@ pub use font_map::FontMap;
 
 
 pub trait PangoContextExt {
-    fn get_font_options(&self) -> Option<cairo::FontOptions>;
+    fn get_font_options(&self) -> cairo::FontOptions;
     fn set_font_options(&self, options: cairo::FontOptions);
     fn get_resolution(&self) -> f64;
     fn set_resolution(&self, dpi: f64);
@@ -40,15 +40,15 @@ pub trait PangoContextExt {
 }
 
 impl PangoContextExt for pango::Context {
-    fn get_font_options(&self) -> Option<cairo::FontOptions> {
+    fn get_font_options(&self) -> cairo::FontOptions {
         unsafe {
-            from_glib_none(ffi::pango_cairo_context_get_font_options(self.to_glib_none().0))
+            cairo::FontOptions::from_raw_full(ffi::pango_cairo_context_get_font_options(self.to_glib_none().0))
         }
     }
 
     fn set_font_options(&self, options: cairo::FontOptions) {
         unsafe {
-            ffi::pango_cairo_context_set_font_options(self.to_glib_none().0, options.get_ptr())
+            ffi::pango_cairo_context_set_font_options(self.to_glib_none().0, options.to_raw_none())
         }
     }
 
