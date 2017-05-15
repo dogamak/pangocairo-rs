@@ -57,7 +57,7 @@ extern "C" {
     //=========================================================================
     // Other functions
     //=========================================================================
-    pub fn pango_cairo_context_get_font_options(context: *mut pango::PangoContext) -> *const cairo::cairo_font_options_t;
+    pub fn pango_cairo_context_get_font_options(context: *mut pango::PangoContext) -> *mut cairo::cairo_font_options_t;
     pub fn pango_cairo_context_get_resolution(context: *mut pango::PangoContext) -> c_double;
     pub fn pango_cairo_context_get_shape_renderer(context: *mut pango::PangoContext, data: *mut gpointer) -> PangoCairoShapeRendererFunc;
     pub fn pango_cairo_context_set_font_options(context: *mut pango::PangoContext, options: *const cairo::cairo_font_options_t);
