@@ -2,8 +2,10 @@ use cairo;
 use ffi;
 use glib::translate::*;
 use gobject_ffi;
+use glib_ffi;
 use pango;
 use pango_sys;
+use std::{mem, ptr};
 
 glib_wrapper! {
     pub struct FontMap(Object<ffi::PangoCairoFontMap>): [pango::FontMap => pango_sys::PangoFontMap];
